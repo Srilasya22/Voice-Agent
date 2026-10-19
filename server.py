@@ -9,7 +9,6 @@ import websockets
 from dotenv import load_dotenv
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
 load_dotenv()
 
@@ -20,11 +19,11 @@ KEEPALIVE_SECONDS = 8
 FLUSH_TIMEOUT_SECONDS = 5
 
 app = FastAPI(title="Voice Agent")
-app.mount("/static", StaticFiles(directory=PUBLIC_DIR), name="static")
 
 
 @app.get("/")
 async def index():
+    # Vercel serves public/ from its CDN, so this route is mainly for local runs.
     return FileResponse(PUBLIC_DIR / "index.html")
 
 
