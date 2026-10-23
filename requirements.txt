@@ -2,4 +2,6 @@ fastapi
 uvicorn[standard]
 websockets
 python-dotenv
+deepgram
+flake8
 httpx
