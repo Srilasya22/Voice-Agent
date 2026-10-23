@@ -9,13 +9,13 @@ on:
 
 
 jobs:
-  build-linux:
+  Linting:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
     - name: Set up Python 3.13.4
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v2
       with:
         python-version: '3.13.14'
     - name: Install dependencies
@@ -25,3 +25,21 @@ jobs:
     - name: Run tests
       run: |
         flake8 main.py
+
+  testing:
+    needs: linting
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: code checkout
+        uses: actions/checkout@v3
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13.14'
+
+      - name: run unit test
+        run: |
+          python -m unittest discover
