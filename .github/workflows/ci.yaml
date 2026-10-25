@@ -44,7 +44,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -60,4 +60,4 @@ jobs:
       - name: Push Docker image to ECR
         run: |
           docker tag voice-agent:v1 276460185644.dkr.ecr.us-east-1.amazonaws.com/voice-agent:v1
-          docker push 276460185644.dkr.ecr.us-east-1.amazonaws.com/voice-agent:latest
+          docker push 276460185644.dkr.ecr.us-east-1.amazonaws.com/voice-agent:v1
