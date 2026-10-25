@@ -1,0 +1,23 @@
+Create a CI workflow
+1. Create a workflow using github actions
+---> Create a github runner
+--->checkout action using github actions
+---> Create a python environment for server
+---> Install requirements
+---> Check linting using flake8
+---> Unit test the functions
+
+Create a docker image
+1. Docker login
+2. Push image to docker hub
+docker build -t voice-agent .
+docker run -p 8000:8000 --name voice-agent-app voice-agent
+docker run -p 8000:8000 --env-file .env voice-agent --> To run with env file
+
+3. Dockerignore prevents to push few file to docker image
+docker tag voice-agent lasya743/voice-agent:latest 
+docker push lasya743/voice-agent:latest      
+
+
+4. Install aws cli
+5. Configure aws in the terminal of project
