@@ -55,7 +55,7 @@ jobs:
       - name: Build Docker image
         run: |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 276460185644.dkr.ecr.us-east-1.amazonaws.com
-          docker build -t voice-agent:v1 .
+          docker build --provenance=false --sbom=false -t voice-agent:v1 .
 
       - name: Push Docker image to ECR
         run: |
